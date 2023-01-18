@@ -19,3 +19,11 @@ def index(request):
 			"</body></html>"
 		)
 
+@csrf_exempt
+def jsontest(request):
+	return HttpResponse(json.dumps({
+		'key1': 'value1',
+		'key2': 'value2',
+		'key3': 'value3',
+	}))
+
