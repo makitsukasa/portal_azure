@@ -28,6 +28,8 @@ DEBUG = True
 
 ALLOWED_HOSTS = ['*']
 
+DIGEST_REQUIRE_AUTHENTICATION = True
+
 
 # Application definition
 
