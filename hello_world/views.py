@@ -1,4 +1,5 @@
 import json
+from django.shortcuts import render
 from django.http import HttpResponse
 
 def index(request):
@@ -23,3 +24,6 @@ def jsontest(request):
 		'key2': 'value2',
 		'key3': 'value3',
 	}))
+
+def portal(request):
+	return render(request, 'portal', context={})

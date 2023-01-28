@@ -1,0 +1,97 @@
+<html>
+	<head>
+		{% load static %}
+		<link rel="preload" href="{% static 'css/NotoSansMonoCJKjp-Regular.woff2' %}" as="font" type="font/woff2" >
+		<link href="{% static 'css/index.css' %}" rel="stylesheet" type="text/css" media="all">
+		<script src="{% static 'js/calendar.js' %}"></script>
+	</head>
+	<body>
+		<iframe id="receive-post" style="width:0px;height:0px;border:0px;"></iframe>
+		<table class="divider"><tbody>
+			<tr class="headers">
+				<th class="ruler-controls"></th>
+				<th></th>
+			</tr>
+			<tr>
+				<td colspan="2" class="calendar">
+					<table><tbody>
+						<tr class="dayofweek">
+							<th>日</th>
+							<th>月</th>
+							<th>火</th>
+							<th>水</th>
+							<th>木</th>
+							<th>金</th>
+							<th>土</th>
+						</tr>
+						<tr class="week">
+							<td colspan="2" id="clock">カレンダー</td>
+							<td class="control">
+								<div>前週 今週 次週</div>
+								<div>前月 今月 次月</div>
+							</td>
+							<td class="cell week0 Wed" id="week0Wed"><div class="datestr"></div><div class="schedule"></div></td>
+							<td class="cell week0 Thu" id="week0Thu"><div class="datestr"></div><div class="schedule"></div></td>
+							<td class="cell week0 Fri" id="week0Fri"><div class="datestr"></div><div class="schedule"></div></td>
+							<td class="cell week0 Sat" id="week0Sat"><div class="datestr"></div><div class="schedule"></div></td>
+						</tr>
+						<tr class="week">
+							<td class="cell week1 Sun" id="week1Sun"><div class="datestr"></div><div class="schedule"></div></td>
+							<td class="cell week1 Mon" id="week1Mon"><div class="datestr"></div><div class="schedule"></div></td>
+							<td class="cell week1 Tue" id="week1Tue"><div class="datestr"></div><div class="schedule"></div></td>
+							<td class="cell week1 Wed" id="week1Wed"><div class="datestr"></div><div class="schedule"></div></td>
+							<td class="cell week1 Thu" id="week1Thu"><div class="datestr"></div><div class="schedule"></div></td>
+							<td class="cell week1 Fri" id="week1Fri"><div class="datestr"></div><div class="schedule"></div></td>
+							<td class="cell week1 Sat" id="week1Sat"><div class="datestr"></div><div class="schedule"></div></td>
+						</tr>
+						<tr class="week">
+							<td class="cell week2 Sun" id="week2Sun"><div class="datestr"></div><div class="schedule"></div></td>
+							<td class="cell week2 Mon" id="week2Mon"><div class="datestr"></div><div class="schedule"></div></td>
+							<td class="cell week2 Tue" id="week2Tue"><div class="datestr"></div><div class="schedule"></div></td>
+							<td class="cell week2 Wed" id="week2Wed"><div class="datestr"></div><div class="schedule"></div></td>
+							<td class="cell week2 Thu" id="week2Thu"><div class="datestr"></div><div class="schedule"></div></td>
+							<td class="cell week2 Fri" id="week2Fri"><div class="datestr"></div><div class="schedule"></div></td>
+							<td class="cell week2 Sat" id="week2Sat"><div class="datestr"></div><div class="schedule"></div></td>
+						</tr>
+						<tr class="week">
+							<td class="cell week3 Sun" id="week3Sun"><div class="datestr"></div><div class="schedule"></div></td>
+							<td class="cell week3 Mon" id="week3Mon"><div class="datestr"></div><div class="schedule"></div></td>
+							<td class="cell week3 Tue" id="week3Tue"><div class="datestr"></div><div class="schedule"></div></td>
+							<td class="cell week3 Wed" id="week3Wed"><div class="datestr"></div><div class="schedule"></div></td>
+							<td class="cell week3 Thu" id="week3Thu"><div class="datestr"></div><div class="schedule"></div></td>
+							<td class="cell week3 Fri" id="week3Fri"><div class="datestr"></div><div class="schedule"></div></td>
+							<td class="cell week3 Sat" id="week3Sat"><div class="datestr"></div><div class="schedule"></div></td>
+						</tr>
+						<tr class="week">
+							<td class="cell week4 Sun" id="week4Sun"><div class="datestr"></div><div class="schedule"></div></td>
+							<td class="cell week4 Mon" id="week4Mon"><div class="datestr"></div><div class="schedule"></div></td>
+							<td class="cell week4 Tue" id="week4Tue"><div class="datestr"></div><div class="schedule"></div></td>
+							<td class="cell week4 Wed" id="week4Wed"><div class="datestr"></div><div class="schedule"></div></td>
+							<td class="cell week4 Thu" id="week4Thu"><div class="datestr"></div><div class="schedule"></div></td>
+							<td class="cell week4 Fri" id="week4Fri"><div class="datestr"></div><div class="schedule"></div></td>
+							<td class="cell week4 Sat" id="week4Sat"><div class="datestr"></div><div class="schedule"></div></td>
+						</tr>
+						<tr class="week">
+							<td class="cell week5 Sun" id="week5Sun"><div class="datestr"></div><div class="schedule"></div></td>
+							<td class="cell week5 Mon" id="week5Mon"><div class="datestr"></div><div class="schedule"></div></td>
+							<td class="cell week5 Tue" id="week5Tue"><div class="datestr"></div><div class="schedule"></div></td>
+							<td class="cell week5 Wed" id="week5Wed"><div class="datestr"></div><div class="schedule"></div></td>
+							<td class="cell week5 Thu" id="week5Thu"><div class="datestr"></div><div class="schedule"></div></td>
+							<td class="cell week5 Fri" id="week5Fri"><div class="datestr"></div><div class="schedule"></div></td>
+							<td class="cell week5 Sat" id="week5Sat"><div class="datestr"></div><div class="schedule"></div></td>
+						</tr>
+					</tbody></table>
+				</td>
+			</tr>
+			<tr>
+				<td class="controls" method="post">
+					<table><tbody><tr>
+						<td class="c_text"><input type="text" id="tt_text" placeholder="tt" required></td>
+						<td class="c_submit"><input type="button" id="tt_submit" value="submit"></td>
+					</tr></tbody></table>
+				</td>
+				<td class="tasks">tasks</td>
+			</tr>
+		</tbody></table>
+	</body>
+</html>

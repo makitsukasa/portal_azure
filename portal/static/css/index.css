@@ -1,0 +1,162 @@
+:root {
+	--controls-width: 20%;
+	--calendar-height: 70%;
+	--datestr-border: 3px;
+	--submitbuttons-width: 8ch;
+}
+
+@font-face {
+	font-family: 'NotoSansMonoCJKjp';
+	src: url('./NotoSansMonoCJKjp-Regular.woff2');
+	font-display: swap;
+}
+
+body{
+	margin: 0px;
+	font-family: NotoSansMonoCJKjp;
+}
+
+table.divider{
+	width: 100%;
+	height: 100%;
+	table-layout: fixed;
+	border-collapse: collapse;
+	/* background-color: lightgray; */
+}
+
+table.divider > tbody > tr > td{
+	border-collapse: collapse;
+}
+
+table.divider > tbody > tr.headers{
+	visibility: hidden;
+	height: 0px;
+	margin: 0px;
+	border: 0px;
+	padding: 0px;
+}
+
+table.divider > tbody > tr.headers > th{
+	visibility: hidden;
+	height: 0px;
+	margin: 0px;
+	border: 0px;
+	padding: 0px;
+}
+
+table.divider th.ruler-bookmark {
+	width: var(--bookmark-width);
+}
+
+table.divider th.ruler-controls {
+	width: var(--controls-width);
+}
+
+td.bookmark{
+	background-color:antiquewhite;
+}
+
+td.calendar{
+	background-color:lightgray;
+	height: var(--calendar-height);
+}
+
+td.calendar #clock, td.calendar td.control, td.calendar td.cell{
+	padding: 0px;
+	border: 1px solid lightgray;
+}
+
+td.calendar #clock{
+	/* height: 0%; */
+	background-color: white;
+	font-size: 200%;
+}
+
+td.calendar #clock > span{
+	display: inline-block;
+	white-space: pre;
+}
+
+td.calendar #clock > span.small{
+	font-size: 75%;
+}
+
+td.calendar td.control{
+	background-color: white;
+}
+
+td.calendar td.control > div{
+	width: 100%;
+	text-align: center;
+}
+
+td.calendar table{
+	width: 100%;
+	height: 100%;
+	table-layout: fixed;
+}
+
+td.calendar table, td.calendar td, td.calendar th {
+	border-collapse: collapse;
+}
+
+td.calendar tr.dayofweek{
+	margin: 0px;
+	border: 0px;
+	padding: 0px;
+}
+
+td.calendar tr.dayofweek > th{
+	height: 0px;
+	margin: 0px;
+	border: 0px;
+	padding: 0px;
+	height: 1em;
+	font-weight: normal;
+}
+
+td.calendar tr.week {
+	height: calc(100% / 6);
+}
+
+td.calendar td.cell > div.datestr{
+	width: calc(100% - var(--datestr-border) * 2);
+	height: calc(1em + var(--datestr-border) * 2);
+	text-align: center;
+	background-color: white;
+	border: var(--datestr-border) solid transparent;
+}
+
+td.calendar td.today > div.datestr{
+	border: var(--datestr-border) solid orange;
+}
+
+td.calendar td.cell > div.schedule{
+	height: calc(100% - 1em - var(--datestr-border) * 4);
+	background-color: white;
+}
+
+td.controls{
+	background-color:palegoldenrod;
+}
+
+td.controls table{
+	width: 100%;
+	border-collapse: collapse;
+}
+
+td.controls td.c_text{
+	width: calc(100% - var(--submitbuttons-width));
+}
+
+#tt_text{
+	width: 100%;
+}
+
+td.controls td.c_submit{
+	width: var(--submitbuttons-width);
+}
+
+td.tasks{
+	background-color:lightgreen;
+}
