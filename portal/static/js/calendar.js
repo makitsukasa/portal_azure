@@ -1,5 +1,5 @@
 const today = new Date();
-let clockElement = null;
+let clockElements = [];
 
 function updateClock () {
 	var currentTime = new Date();
@@ -11,11 +11,16 @@ function updateClock () {
 	var WWW = ["日", "月", "火", "水", "木", "金", "土"][currentTime.getDay()];
 	var HH = (" " + currentTime.getHours()).slice(-2);
 	var mm = ("0" + currentTime.getMinutes()).slice(-2);
-	clockElement.innerHTML = `<span class="small">${YYYY}/</span><span>${MM}/${DD}</span><span class="small">(${WWW}) </span><span>${HH}:${mm}</span>`;
 
-	if (HH == " 0" && mm == "00") {
+	if (clockElements[1].innerHTML != MM + "/" + DD) {
 		showCalendar();
 	}
+
+	clockElements[0].innerHTML = YYYY + "/";
+	clockElements[1].innerHTML = MM + "/" + DD;
+	clockElements[2].innerHTML = "(" + WWW + ") ";
+	clockElements[3].innerHTML = HH + ":" + mm;
+
 	var ms = currentTime.getSeconds() * 1000 + currentTime.getMilliseconds();
 	setTimeout(updateClock, 60000 - ms);
  }
@@ -41,7 +46,12 @@ function getDateStr (date, month = false) {
 }
 
 function showCalendar () {
-	clockElement = document.getElementById("clock");
+	clockElements = [
+		document.getElementById("clock_year"),
+		document.getElementById("clock_date"),
+		document.getElementById("clock_dayofweek"),
+		document.getElementById("clock_time"),
+	];
 	var cells = document.getElementsByClassName("cell");
 	var date = getWeek0WedDate();
 	for (let i = 0; i < cells.length; i++) {
