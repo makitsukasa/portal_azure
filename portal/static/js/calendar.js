@@ -1,27 +1,29 @@
-const today = new Date();
+let today = null;
 let clockElements = [];
 
 function updateClock () {
-	var currentTime = new Date();
+	let currentTime = new Date();
 	// console.log(`updateclock() ${currentTime.getHours()}:${currentTime.getMinutes()}:${currentTime.getSeconds()}.${currentTime.getMilliseconds()}`);
 
-	var YYYY = currentTime.getFullYear();
-	var MM = (" " + (currentTime.getMonth() + 1)).slice(-2);
-	var DD = (" " + currentTime.getDate()).slice(-2);
-	var WWW = ["日", "月", "火", "水", "木", "金", "土"][currentTime.getDay()];
-	var HH = (" " + currentTime.getHours()).slice(-2);
-	var mm = ("0" + currentTime.getMinutes()).slice(-2);
+	let YYYY = currentTime.getFullYear();
+	let MM = (" " + (currentTime.getMonth() + 1)).slice(-2);
+	let DD = (" " + currentTime.getDate()).slice(-2);
+	let WWW = ["日", "月", "火", "水", "木", "金", "土"][currentTime.getDay()];
+	let HH = (" " + currentTime.getHours()).slice(-2);
+	let mm = ("0" + currentTime.getMinutes()).slice(-2);
 
-	if (clockElements[1].innerHTML != MM + "/" + DD) {
+	let MM_DD = MM + "/" + DD;
+
+	if (clockElements[1].innerHTML != MM_DD) {
 		showCalendar();
 	}
 
 	clockElements[0].innerHTML = YYYY + "/";
-	clockElements[1].innerHTML = MM + "/" + DD;
+	clockElements[1].innerHTML = MM_DD;
 	clockElements[2].innerHTML = "(" + WWW + ") ";
 	clockElements[3].innerHTML = HH + ":" + mm;
 
-	var ms = currentTime.getSeconds() * 1000 + currentTime.getMilliseconds();
+	let ms = currentTime.getSeconds() * 1000 + currentTime.getMilliseconds();
 	setTimeout(updateClock, 60000 - ms);
  }
 
@@ -46,14 +48,15 @@ function getDateStr (date, month = false) {
 }
 
 function showCalendar () {
+	today = new Date();
 	clockElements = [
 		document.getElementById("clock_year"),
 		document.getElementById("clock_date"),
 		document.getElementById("clock_dayofweek"),
 		document.getElementById("clock_time"),
 	];
-	var cells = document.getElementsByClassName("cell");
-	var date = getWeek0WedDate();
+	let cells = document.getElementsByClassName("cell");
+	let date = getWeek0WedDate();
 	for (let i = 0; i < cells.length; i++) {
 		let nextDate = new Date(date);
 		nextDate.setDate(date.getDate() + 1);
@@ -80,9 +83,7 @@ function showCalendar () {
 	}
 }
 
-function init() {
+window.addEventListener("load", () => {
 	showCalendar();
 	updateClock();
-}
-
-window.addEventListener("load", init);
+});
