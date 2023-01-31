@@ -1,0 +1,75 @@
+:root {
+	--bookmark-width: 25%;
+	--controls-width: 20%;
+	--calendar-height: 70%;
+	--datestr-border: 3px;
+	--submitbuttons-width: 8ch;
+}
+
+@font-face {
+	font-family: 'NotoSansMonoCJKjp';
+	src: url('./NotoSansMonoCJKjp-Regular.woff2');
+	font-display: swap;
+}
+
+body{
+	margin: 0px;
+	font-family: NotoSansMonoCJKjp;
+}
+
+table.divider{
+	width: 100%;
+	height: 100%;
+	table-layout: fixed;
+	border-collapse: collapse;
+	/* background-color: lightgray; */
+}
+
+table.divider > tbody > tr > td {
+	border-collapse: collapse;
+}
+
+table.divider > tbody > tr.headers{
+	visibility: hidden;
+	height: 0px;
+	margin: 0px;
+	border: 0px;
+	padding: 0px;
+}
+
+table.divider > tbody > tr.headers > th{
+	visibility: hidden;
+	height: 0px;
+	margin: 0px;
+	border: 0px;
+	padding: 0px;
+}
+
+table.divider th.ruler-bookmark {
+	width: var(--bookmark-width);
+}
+
+td.bookmark{
+	background-color:antiquewhite;
+}
+
+td.portal_azure{
+	height: 100%;
+	width: 100%;
+}
+
+td.portal_azure > div{
+	height: 100%;
+	width: 100%;
+	margin: 0px;
+	border: 0px;
+	padding: 0px;
+}
+
+iframe {
+	height: 100%;
+	width: 100%;
+	margin: 0px;
+	border: 0px;
+	padding: 0px;
+}

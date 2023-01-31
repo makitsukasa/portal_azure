@@ -19,7 +19,8 @@ from django.urls import include, path
 urlpatterns = [
 	# path('', include('hello_azure.urls')),
 	path('', include('hello_world.urls')),
-	path('portal/', include('portal.urls')),
+	path('calendar/', include('calendarapp.urls')),
+	path('portal/', include('portalapp.urls')),
 	path('tt/', include('twitter.urls')),
 	path('admin/', admin.site.urls),
 ]

@@ -1,0 +1,24 @@
+<html>
+	<head>
+		{% load static %}
+		<link rel="preload" href="{% static 'css/NotoSansMonoCJKjp-Regular.woff2' %}" as="font" type="font/woff2" >
+		<link href="{% static 'css/portal.css' %}" rel="stylesheet" type="text/css" media="all">
+	</head>
+	<body>
+		<iframe id="receive-post" style="width:0px;height:0px;border:0px;"></iframe>
+		<table class="divider"><tbody>
+			<tr class="headers">
+				<th class="ruler-bookmark"></th>
+				<th></th>
+			</tr>
+			<tr>
+				<td class="bookmark">
+					<a href="http://www.google.com" target="_blank">google</a>
+				</td>
+				<td class="portal_azure">
+						<iframe src="/calendar"></iframe>
+				</td>
+			</tr>
+		</tbody></table>
+	</body>
+</html>

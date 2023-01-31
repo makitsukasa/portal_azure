@@ -25,5 +25,8 @@ def jsontest(request):
 		'key3': 'value3',
 	}))
 
+def calendar(request):
+	return render(request, 'calendar', context={})
+
 def portal(request):
 	return render(request, 'portal', context={})
