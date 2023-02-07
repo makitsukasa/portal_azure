@@ -53,7 +53,7 @@ table.divider th.ruler-controls {
 }
 
 td.bookmark{
-	background-color:antiquewhite;
+	background-color:white;
 }
 
 td.calendar{
@@ -137,7 +137,7 @@ td.calendar td.cell > div.schedule{
 }
 
 td.controls{
-	background-color:palegoldenrod;
+	background-color:lightgray;
 }
 
 td.controls table{
@@ -158,5 +158,5 @@ td.controls td.c_submit{
 }
 
 td.tasks{
-	background-color:lightgreen;
+	background-color:white;
 }
