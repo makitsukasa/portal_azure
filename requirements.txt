@@ -2,3 +2,5 @@ Django
 whitenoise
 wsgi-basic-auth
 tweepy
+google-auth
+google-api-python-client
