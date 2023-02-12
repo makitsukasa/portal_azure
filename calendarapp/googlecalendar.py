@@ -1,14 +1,8 @@
 import os
-import sys
 import datetime
 import googleapiclient.discovery
 import google.auth
 import google.oauth2
-if __name__ == '__main__':
-	sys.path.append(".")
-	import keys
-else:
-	from . import keys
 
 def filter_func(event, date, show_hidden = False):
 	if show_hidden:
@@ -41,14 +35,14 @@ def get_events(todaystr = None):
 
 	try:
 		events = service.events().list(
-			calendarId=keys.CALENDAR_ID,
+			calendarId=os.getenv("CUSTOMCONNSTR_GOOGLE_CALENDAR_ID"),
 			timeMin=f"{date_min.isoformat()}Z",
 			timeMax=f"{date_max.isoformat()}Z",
 			singleEvents=True,
 			orderBy="startTime",
 		).execute()
 		holyday_events = service.events().list(
-			calendarId=keys.HOLIDAY_CALENDAR_ID,
+			calendarId=os.getenv("CUSTOMCONNSTR_GOOGLE_HOLIDAY_CALENDAR_ID"),
 			timeMin=f"{date_min.isoformat()}Z",
 			timeMax=f"{date_max.isoformat()}Z",
 			singleEvents=True,
