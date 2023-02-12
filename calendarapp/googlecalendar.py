@@ -1,7 +1,9 @@
+import os
+import sys
+import datetime
 import googleapiclient.discovery
 import google.auth
-import datetime
-import sys
+import google.oauth2
 if __name__ == '__main__':
 	sys.path.append(".")
 	import keys
@@ -15,13 +17,16 @@ def filter_func(event, date, show_hidden = False):
 		return event["date"] == date and (event["color"] in ["0", "6"])
 
 def get_events(todaystr = None):
-	gapi_creds = google.auth.load_credentials_from_file(
-		keys.JSON_FILENAME,
-		[
-			# "https://www.googleapis.com/auth",
+	gapi_creds = google.oauth2.service_account.Credentials.from_service_account_info(
+		{
+			"private_key": os.getenv("CUSTOMCONNSTR_GOOGLE_PRIVATE_KEY", "").replace('\\n', '\n'),
+	 		"client_email": os.getenv("CUSTOMCONNSTR_GOOGLE_CLIENT_EMAIL", ""),
+			"token_uri": os.getenv("CUSTOMCONNSTR_GOOGLE_TOKEN_URI", "")
+		},
+		scopes=[
 			"https://www.googleapis.com/auth/calendar",
-		],
-	)[0]
+		]
+	)
 
 	service = googleapiclient.discovery.build("calendar", "v3", credentials=gapi_creds)
 
@@ -80,5 +85,5 @@ def get_events(todaystr = None):
 
 if __name__ == '__main__':
 	# get_events()
-	[print(e) for e in get_events()]
+	[print(d, e) for d, e in get_events().items()]
 	# [print(e) for e in get_events("2023-02-01")]
