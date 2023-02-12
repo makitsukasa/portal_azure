@@ -131,9 +131,28 @@ td.calendar td.today > div.datestr{
 	border: var(--datestr-border) solid orange;
 }
 
-td.calendar td.cell > div.schedule{
+td.calendar td.cell > div.schedules{
 	height: calc(100% - 1em - var(--datestr-border) * 4);
 	background-color: white;
+}
+
+td.calendar td.cell > div.schedules > p{
+	margin-top: 0;
+	margin-bottom: 1px;
+	margin-left: 1px;
+	margin-right: 1px;
+}
+
+td.calendar td.cell > div.schedules > p.schedule_0{
+	border: 1px solid cornflowerblue;
+}
+
+td.calendar td.cell > div.schedules > p.schedule_3{
+	border: 1px solid palegreen;
+}
+
+td.calendar td.cell > div.schedules > p.schedule_6{
+	border: 1px solid palevioletred;
 }
 
 td.controls{
