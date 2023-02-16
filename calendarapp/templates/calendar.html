@@ -4,6 +4,7 @@
 		<link rel="preload" href="{% static 'css/NotoSansMonoCJKjp-Regular.woff2' %}" as="font" crossorigin="anonymous" type="font/woff2" >
 		<link href="{% static 'css/calendar.css' %}" rel="stylesheet" type="text/css" media="all">
 		<script src="{% static 'js/calendar.js' %}"></script>
+		<script src="{% static 'js/tasks.js' %}"></script>
 		<script src="{% static 'js/twitter.js' %}"></script>
 	</head>
 	<body>
@@ -134,6 +135,11 @@
 						{% csrf_token %}
 						<td class="c_text"><input type="text" id="tt_text" name="text" placeholder="tt" autocomplete="off" required></td>
 						<td class="c_submit"><input type="button" id="tt_submit" value="submit"></td>
+					</tr></tbody></table></form>
+					<form id="gt"><table><tbody><tr>
+						{% csrf_token %}
+						<td class="c_text"><input type="text" id="gt_text" name="text" placeholder="gt" autocomplete="off" required></td>
+						<td class="c_submit"><input type="button" id="gt_submit" value="submit"></td>
 					</tr></tbody></table></form>
 				</td>
 				<td class="tasks">tasks</td>

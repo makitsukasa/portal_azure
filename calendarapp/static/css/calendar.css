@@ -168,7 +168,7 @@ td.controls td.c_text{
 	width: calc(100% - var(--submitbuttons-width));
 }
 
-#tt_text{
+#tt_text, #gt_text{
 	width: 100%;
 }
 
