@@ -1,7 +1,7 @@
 :root {
 	--controls-width: 20%;
 	--calendar-height: 70%;
-	--datestr-border: 3px;
+	--datestr-border: 4px;
 	--submitbuttons-width: 8ch;
 }
 
@@ -12,7 +12,7 @@
 }
 
 body{
-	margin: 0px;
+	margin: 0;
 	font-family: NotoSansMonoCJKjp;
 }
 
@@ -30,18 +30,18 @@ table.divider > tbody > tr > td{
 
 table.divider > tbody > tr.headers{
 	visibility: hidden;
-	height: 0px;
-	margin: 0px;
-	border: 0px;
-	padding: 0px;
+	height: 0;
+	margin: 0;
+	border: 0;
+	padding: 0;
 }
 
 table.divider > tbody > tr.headers > th{
 	visibility: hidden;
-	height: 0px;
-	margin: 0px;
-	border: 0px;
-	padding: 0px;
+	height: 0;
+	margin: 0;
+	border: 0;
+	padding: 0;
 }
 
 table.divider th.ruler-bookmark {
@@ -62,7 +62,7 @@ td.calendar{
 }
 
 td.calendar #clock, td.calendar td.control, td.calendar td.cell{
-	padding: 0px;
+	padding: 0;
 	border: 1px solid lightgray;
 }
 
@@ -101,16 +101,16 @@ td.calendar table, td.calendar td, td.calendar th {
 }
 
 td.calendar tr.dayofweek{
-	margin: 0px;
-	border: 0px;
-	padding: 0px;
+	margin: 0;
+	border: 0;
+	padding: 0;
 }
 
 td.calendar tr.dayofweek > th{
-	height: 0px;
-	margin: 0px;
-	border: 0px;
-	padding: 0px;
+	height: 0;
+	margin: 0;
+	border: 0;
+	padding: 0;
 	height: 1em;
 	font-weight: normal;
 }
@@ -178,4 +178,13 @@ td.controls td.c_submit{
 
 td.tasks{
 	background-color:white;
+	padding: 0;
+}
+
+td.tasks iframe {
+	height: 100%;
+	width: 100%;
+	margin: 0;
+	border: 0;
+	padding: 0;
 }

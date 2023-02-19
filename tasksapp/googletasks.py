@@ -45,14 +45,17 @@ def list_tasks():
 
 	try:
 		service = build("tasks", "v1", credentials=creds)
-		items = service.tasks().list(tasklist=TASK_LIST_ID).execute().get("items", [])
+		items = service.tasks().list(
+			tasklist = TASK_LIST_ID,
+			showCompleted = False,
+			showDeleted = False,
+		).execute().get("items", [])
 
 		if not items:
 			print("No tasks found.")
 			return []
 
-		items = sorted(list(filter(
-			lambda t: t["status"] == "needsAction", items)), key=lambda t: t["position"])
+		items = sorted(items, key=lambda t: t["position"])
 
 		return [{
 			"title" : i["title"],
@@ -90,5 +93,5 @@ def insert_task(title):
 
 if __name__ == "__main__":
 	# auth()
-	# [print(t) for t in list_tasks()]
-	insert_task()
+	[print(t) for t in list_tasks()]
+	# insert_task("test ほげほげ")

@@ -15,6 +15,7 @@ window.addEventListener("load", () => {
 			if(e.status === 200) {
 				console.log(e.json());
 				alert("200");
+				document.getElementById("tasks_iframe").contentWindow.location.reload();
 				return;
 			}
 			alert(e.status + " " + e.statusText);
