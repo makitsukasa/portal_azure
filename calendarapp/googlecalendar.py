@@ -4,13 +4,12 @@ import googleapiclient.discovery
 import google.auth
 import google.oauth2
 
-def filter_func(event, date, show_hidden = False):
+def get_events(todaystr = None, show_hidden = False):
 	if show_hidden:
-		return event["date"] == date
+		filter_func = lambda event, date: event["date"] == date
 	else:
-		return event["date"] == date and (event["color"] in ["0", "6"])
+		filter_func = lambda event, date: event["date"] == date and (event["color"] in ["0", "6"])
 
-def get_events(todaystr = None):
 	gapi_creds = google.oauth2.service_account.Credentials.from_service_account_info(
 		{
 			"private_key": os.getenv("CUSTOMCONNSTR_GOOGLE_PRIVATE_KEY", "").replace('\\n', '\n'),
