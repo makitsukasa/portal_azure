@@ -48,6 +48,7 @@ table th.ruler-button {
 
 table th.ruler-title {
 	width: var(--title-width);
+	display: inline-block;
 }
 
 table th.ruler-note {
