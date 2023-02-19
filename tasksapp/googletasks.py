@@ -91,6 +91,27 @@ def insert_task(title):
 		print(e)
 		return False
 
+def delete_task(id):
+	CRED_INFO = json.loads(os.getenv("CUSTOMCONNSTR_GOOGLE_TASKS_CRED_INFO", ""))
+	TASK_LIST_ID = os.getenv("CUSTOMCONNSTR_GOOGLE_TASK_LIST_ID", "")
+	creds = Credentials.from_authorized_user_info(
+		info = CRED_INFO,
+		scopes = ["https://www.googleapis.com/auth/tasks",],
+	)
+
+	try:
+		service = build("tasks", "v1", credentials=creds)
+		service.tasks().delete(
+			task = id,
+			tasklist = TASK_LIST_ID,
+		).execute()
+
+		return True
+
+	except HttpError as e:
+		print(e)
+		return False
+
 if __name__ == "__main__":
 	# auth()
 	[print(t) for t in list_tasks()]
