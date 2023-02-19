@@ -143,6 +143,9 @@ td.calendar td.cell > div.schedules > p{
 	margin-bottom: 1px;
 	margin-left: 1px;
 	margin-right: 1px;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
 }
 
 td.calendar td.cell > div.schedules > p.schedule_0{
