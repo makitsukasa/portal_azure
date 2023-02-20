@@ -14,7 +14,7 @@ window.addEventListener("load", () => {
 		fetch("/tt/p", options).then((e) => {
 			if(e.status === 200) {
 				console.log(e.json());
-				alert("200");
+				document.getElementById("tt_text").value = "";
 				return;
 			}
 			alert(e.status + " " + e.statusText);

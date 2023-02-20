@@ -14,7 +14,7 @@ window.addEventListener("load", () => {
 		fetch("/gt/p", options).then((e) => {
 			if(e.status === 200) {
 				console.log(e.json());
-				alert("200");
+				document.getElementById("gt_text").value = "";
 				document.getElementById("tasks_iframe").contentWindow.location.reload();
 				return;
 			}
