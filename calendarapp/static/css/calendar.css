@@ -2,7 +2,7 @@
 	--controls-width: 20%;
 	--calendar-height: 70%;
 	--datestr-border: 1px;
-	--datestr-height: 1.3em;
+	--datestr-height: 1.5em;
 	--submitbuttons-width: 8ch;
 }
 
@@ -122,7 +122,7 @@ td.calendar tr.week {
 
 td.calendar td.cell > div.datestr{
 	width: calc(100% - var(--datestr-border) * 2);
-	height: calc(var(--datestr-height) + var(--datestr-border) * 2);
+	height: var(--datestr-height);
 	text-align: center;
 	background-color: white;
 	border: var(--datestr-border) solid transparent;
@@ -134,18 +134,22 @@ td.calendar td.today > div.datestr{
 }
 
 td.calendar td.cell > div.schedules{
-	height: calc(100% - var(--datestr-height) - var(--datestr-border) * 4);
+	height: calc(100% - var(--datestr-height) - var(--datestr-border) * 2);
 	background-color: white;
 }
 
 td.calendar td.cell > div.schedules > p{
 	margin-top: 0;
-	margin-bottom: 1px;
+	margin-bottom: 0;
 	margin-left: 1px;
 	margin-right: 1px;
 	white-space: nowrap;
 	overflow: hidden;
 	text-overflow: ellipsis;
+}
+
+td.calendar td.cell > div.schedules > p.margin{
+	height: 1px;
 }
 
 td.calendar td.cell > div.schedules > p.schedule_0{
