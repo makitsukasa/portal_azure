@@ -61,6 +61,10 @@ table td {
 	text-overflow: ellipsis;
 }
 
+table td form {
+	margin: 0;
+}
+
 table input[type="button"] {
 	width: 100%;
 	height: 100%;
