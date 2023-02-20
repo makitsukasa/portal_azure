@@ -20,4 +20,16 @@ window.addEventListener("load", () => {
 			alert(e.status + " " + e.statusText);
 		});
 	};
+
+	tt_text.onkeydown = (e) => {
+		console.log(e);
+		if (e.keyCode !== 13 || !e.ctrlKey) {
+			return false;
+		}
+		if (e.srcElement.value.length === 0) {
+			return false;
+		}
+		tt_submit.dispatchEvent(new MouseEvent("click"));
+		return false;
+	};
 });

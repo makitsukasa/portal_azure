@@ -4,6 +4,7 @@ let gt_submit = null;
 window.addEventListener("load", () => {
 	gt_form = document.getElementById("gt");
 	gt_submit = document.getElementById("gt_submit");
+	gt_text = document.getElementById("gt_text");
 
 	gt_submit.onclick = () => {
 		const options = {
@@ -20,5 +21,17 @@ window.addEventListener("load", () => {
 			}
 			alert(e.status + " " + e.statusText);
 		});
+	};
+
+	gt_text.onkeydown = (e) => {
+		console.log(e);
+		if (e.keyCode !== 13 || !e.ctrlKey) {
+			return false;
+		}
+		if (e.srcElement.value.length === 0) {
+			return false;
+		}
+		gt_submit.dispatchEvent(new MouseEvent("click"));
+		return false;
 	};
 });
