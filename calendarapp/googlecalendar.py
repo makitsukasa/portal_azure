@@ -8,7 +8,7 @@ def get_events(todaystr = None, show_hidden = False):
 	if show_hidden:
 		filter_func = lambda event, date: event["date"] == date
 	else:
-		filter_func = lambda event, date: event["date"] == date and (event["color"] in ["0", "6"])
+		filter_func = lambda event, date: event["date"] == date and (event["color"] in ["0", "4"])
 
 	gapi_creds = google.oauth2.service_account.Credentials.from_service_account_info(
 		{
@@ -60,7 +60,7 @@ def get_events(todaystr = None, show_hidden = False):
 		} for e in events["items"]] + [{
 			"date" : datetime.date.fromisoformat(e["start"]["date"]),
 			"summary" : e["summary"],
-			"color" : e.get("colorId", "6"),
+			"color" : e.get("colorId", "4"),
 		} for e in holyday_events["items"]]
 
 		ret = {"day" + str(i): "" for i in range(39)}
@@ -78,5 +78,5 @@ def get_events(todaystr = None, show_hidden = False):
 
 if __name__ == '__main__':
 	# get_events()
-	[print(d, e) for d, e in get_events().items()]
+	[print(d, e) for d, e in get_events(show_hidden=True).items()]
 	# [print(e) for e in get_events("2023-02-01")]
