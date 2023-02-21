@@ -53,6 +53,15 @@ td.bookmark{
 	background-color:white;
 }
 
+span.bookmark_title{
+	display: inline-block;
+	width: 40%;
+}
+span.bookmark_url{
+	display: inline-block;
+	width: 50%;
+}
+
 td.portal_azure{
 	height: 100%;
 	width: 100%;
