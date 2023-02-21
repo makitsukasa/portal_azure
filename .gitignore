@@ -132,3 +132,4 @@ keys/
 keys.py
 pydata_google_credentials.json
 token.json
+quickstartproject/static
