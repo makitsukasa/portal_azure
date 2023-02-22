@@ -22,14 +22,18 @@ window.addEventListener("load", () => {
 	};
 
 	tt_text.onkeydown = (e) => {
-		console.log(e);
-		if (e.keyCode !== 13 || !e.ctrlKey) {
-			return false;
+		if (!e.ctrlKey) {
+			if (e.keyCode === 13) {
+				return false;
+			}
+			return true;
 		}
-		if (e.srcElement.value.length === 0) {
-			return false;
+		if (e.keyCode !== 13) {
+			return true;
 		}
-		tt_submit.dispatchEvent(new MouseEvent("click"));
+		if (e.srcElement.value.length > 0) {
+			tt_submit.dispatchEvent(new MouseEvent("click"));
+		}
 		return false;
 	};
 });
