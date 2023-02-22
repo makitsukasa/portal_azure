@@ -14,8 +14,11 @@
 			<tr>
 				<td class="bookmark">
 						{% for b in bookmarks %}
-							<a href="{{ b.url }}" target="_blank">
-								<span class="bookmark_title">
+							<p><a href="{{ b.url }}" target="_blank">
+								<span class="bookmark_left">
+								</span><span class="bookmark_icon">
+									<img width="16px" height="16px" src="{{ b.icon }}" />
+								</span><span class="bookmark_title">
 									{{ b.title }}
 								</span><span class="bookmark_url">
 									{% if "show_url" in b %}
@@ -24,7 +27,7 @@
 										{{ b.url }}
 									{% endif %}
 								</span>
-							</a>
+							</a></p>
 						{% endfor %}
 					</td>
 					<td class="portal_azure">

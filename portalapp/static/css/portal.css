@@ -53,13 +53,44 @@ td.bookmark{
 	background-color:white;
 }
 
+td.bookmark p{
+	margin-top: 1em;
+	margin-bottom: 1em;
+	margin-left: 0;
+	margin-right: 0;
+	border: 0;
+	padding: 0;
+}
+
+td.bookmark a{
+	text-decoration: none;
+	color: black;
+}
+
+span.bookmark_left{
+	display: inline-block;
+	width: 3%;
+}
+
+span.bookmark_icon{
+	display: inline-block;
+	width: 16px;
+}
+
 span.bookmark_title{
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
 	display: inline-block;
 	width: 40%;
 }
 span.bookmark_url{
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
 	display: inline-block;
-	width: 50%;
+	width: calc(55% - 16px);
+	color: gray;
 }
 
 td.portal_azure{
