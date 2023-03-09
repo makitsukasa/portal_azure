@@ -24,7 +24,8 @@ def get_events(todaystr = None, show_hidden = False):
 	service = googleapiclient.discovery.build("calendar", "v3", credentials=gapi_creds)
 
 	if not todaystr:
-		today = datetime.datetime.utcnow().replace(hour=0, minute=0, second=0, microsecond=0)
+		today = (datetime.datetime.utcnow() + datetime.timedelta(hours=9)).replace(
+			hour=0, minute=0, second=0, microsecond=0)
 	else:
 		today = datetime.datetime.fromisoformat(todaystr).replace(
 			hour=0, minute=0, second=0, microsecond=0)
@@ -78,5 +79,6 @@ def get_events(todaystr = None, show_hidden = False):
 
 if __name__ == '__main__':
 	# get_events()
-	[print(d, e) for d, e in get_events(show_hidden=True).items()]
+	# [print(d, e) for d, e in get_events(show_hidden=True).items()]
+	[print(d, e) for d, e in get_events("2023-03-05", show_hidden=True).items()]
 	# [print(e) for e in get_events("2023-02-01")]
