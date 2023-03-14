@@ -6,6 +6,7 @@ window.addEventListener("load", () => {
 	tt_submit = document.getElementById("tt_submit");
 
 	tt_submit.onclick = () => {
+		tt_submit.value = "✓";
 		const options = {
 			method: "POST",
 			body: new FormData(tt_form),
@@ -15,6 +16,7 @@ window.addEventListener("load", () => {
 			if(e.status === 200) {
 				console.log(e.json());
 				document.getElementById("tt_text").value = "";
+				tt_submit.value = "submit";
 				return;
 			}
 			alert(e.status + " " + e.statusText);

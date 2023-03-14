@@ -7,6 +7,7 @@ window.addEventListener("load", () => {
 	gt_text = document.getElementById("gt_text");
 
 	gt_submit.onclick = () => {
+		gt_submit.value = "✓";
 		const options = {
 			method: "POST",
 			body: new FormData(gt_form),
@@ -16,6 +17,7 @@ window.addEventListener("load", () => {
 			if(e.status === 200) {
 				console.log(e.json());
 				document.getElementById("gt_text").value = "";
+				gt_submit.value = "submit";
 				document.getElementById("tasks_iframe").contentWindow.location.reload();
 				return;
 			}

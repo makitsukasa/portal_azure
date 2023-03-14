@@ -5,10 +5,11 @@ window.addEventListener("load", () => {
 
 	delete_buttons.forEach(button => button.onclick = (event) => {
 		console.log(event);
-		delete_form = event.srcElement.form;
+		event.srcElement.value = "✓";
+		srcForm = event.srcElement.form;
 		const options = {
 			method: "POST",
-			body: new FormData(delete_form),
+			body: new FormData(srcForm),
 			credentials: 'include',
 		};
 		fetch("/gt/d", options).then((e) => {
