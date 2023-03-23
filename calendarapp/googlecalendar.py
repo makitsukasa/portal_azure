@@ -1,8 +1,9 @@
 import os
 import datetime
-import googleapiclient.discovery
-import google.auth
-import google.oauth2
+from google.oauth2.service_account import Credentials
+from googleapiclient.discovery import build
+from googleapiclient.errors import HttpError
+
 
 def get_events(todaystr = None, show_hidden = False):
 	if show_hidden:
@@ -10,7 +11,7 @@ def get_events(todaystr = None, show_hidden = False):
 	else:
 		filter_func = lambda event, date: event["date"] == date and (event["color"] in ["0", "4"])
 
-	gapi_creds = google.oauth2.service_account.Credentials.from_service_account_info(
+	gapi_creds = Credentials.from_service_account_info(
 		{
 			"private_key": os.getenv("CUSTOMCONNSTR_GOOGLE_PRIVATE_KEY", "").replace('\\n', '\n'),
 	 		"client_email": os.getenv("CUSTOMCONNSTR_GOOGLE_CLIENT_EMAIL", ""),
@@ -21,7 +22,7 @@ def get_events(todaystr = None, show_hidden = False):
 		]
 	)
 
-	service = googleapiclient.discovery.build("calendar", "v3", credentials=gapi_creds)
+	service = build("calendar", "v3", credentials=gapi_creds)
 
 	if not todaystr:
 		today = (datetime.datetime.utcnow() + datetime.timedelta(hours=9)).replace(
@@ -77,8 +78,44 @@ def get_events(todaystr = None, show_hidden = False):
 			} for e in events_today]
 		return ret
 
+
+def insert_event(summary, date, color = 0):
+	gapi_creds = Credentials.from_service_account_info(
+		{
+			"private_key": os.getenv("CUSTOMCONNSTR_GOOGLE_PRIVATE_KEY", "").replace('\\n', '\n'),
+	 		"client_email": os.getenv("CUSTOMCONNSTR_GOOGLE_CLIENT_EMAIL", ""),
+			"token_uri": os.getenv("CUSTOMCONNSTR_GOOGLE_TOKEN_URI", "")
+		},
+		scopes=[
+			"https://www.googleapis.com/auth/calendar",
+		]
+	)
+
+	try:
+		service = build("calendar", "v3", credentials=gapi_creds)
+
+		service.events().insert(
+			calendarId=os.getenv("CUSTOMCONNSTR_GOOGLE_CALENDAR_ID"),
+			body={
+				"summary": summary,
+				"start": {"date": date},
+				"end": {"date": date},
+				"colorId": color,
+			}
+		).execute()
+
+		return True
+
+	except HttpError as e:
+		print(e)
+		return False
+
 if __name__ == '__main__':
 	# get_events()
 	# [print(d, e) for d, e in get_events(show_hidden=True).items()]
-	[print(d, e) for d, e in get_events("2023-03-05", show_hidden=True).items()]
+	# [print(d, e) for d, e in get_events("2023-03-05", show_hidden=True).items()]
 	# [print(e) for e in get_events("2023-02-01")]
+
+	# insert_event("さまり", "2023-04-05")
+	insert_event("さまり", "2023-04-05", 2)
+	# insert_event("さまり", "2023-04-05", 4)

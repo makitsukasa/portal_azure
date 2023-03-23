@@ -4,7 +4,8 @@
 		<link rel="preload" href="{% static 'css/NotoSansMonoCJKjp-Regular.woff2' %}" as="font" crossorigin="anonymous" type="font/woff2" >
 		<link href="{% static 'css/calendar.css' %}" rel="stylesheet" type="text/css" media="all">
 		<script src="{% static 'js/calendar.js' %}"></script>
-		<script src="{% static 'js/insert_task.js' %}"></script>
+		<script src="{% static 'js/gt.js' %}"></script>
+		<script src="{% static 'js/gc.js' %}"></script>
 		<script src="{% static 'js/tt.js' %}"></script>
 		<title>calendar</title>
 	</head>
@@ -132,15 +133,30 @@
 			</tr>
 			<tr>
 				<td class="controls" method="post">
+					<form id="gc">
+						{% csrf_token %}
+						<table><tbody><tr>
+							<td class="ctrl_date"><input type="date" id="gc_date" name="date" autocomplete="off" required></td>
+							<td class="ctrl_color"><select id="gc_color" name="color">
+								<option value="0">青</option>
+								<option value="2">緑</option>
+								<option value="4">赤</option>
+							</select></td>
+						</tr></tbody></table>
+						<table><tbody><tr>
+							<td class="ctrl_text"><input type="text" id="gc_text" name="text" placeholder="gc" autocomplete="off" required></td>
+							<td class="ctrl_submit"><input type="button" id="gc_submit" value="submit"></td>
+						</tr></tbody></table>
+					</form>
 					<form id="tt"><table><tbody><tr>
 						{% csrf_token %}
-						<td class="c_text"><input type="text" id="tt_text" name="text" placeholder="tt" autocomplete="off" required></td>
-						<td class="c_submit"><input type="button" id="tt_submit" value="submit"></td>
+						<td class="ctrl_text"><input type="text" id="tt_text" name="text" placeholder="tt" autocomplete="off" required></td>
+						<td class="ctrl_submit"><input type="button" id="tt_submit" value="submit"></td>
 					</tr></tbody></table></form>
 					<form id="gt"><table><tbody><tr>
 						{% csrf_token %}
-						<td class="c_text"><input type="text" id="gt_text" name="text" placeholder="gt" autocomplete="off" required></td>
-						<td class="c_submit"><input type="button" id="gt_submit" value="submit"></td>
+						<td class="ctrl_text"><input type="text" id="gt_text" name="text" placeholder="gt" autocomplete="off" required></td>
+						<td class="ctrl_submit"><input type="button" id="gt_submit" value="submit"></td>
 					</tr></tbody></table></form>
 				</td>
 				<td class="tasks">

@@ -14,26 +14,26 @@
 			</tr>
 			<tr>
 				<td class="bookmark">
-						{% for b in bookmarks %}
-							<p><a href="{{ b.url }}" target="_blank">
-								<span class="bookmark_left">
-								</span><span class="bookmark_icon">
-									<img width="16px" height="16px" src="{{ b.icon }}" />
-								</span><span class="bookmark_title">
-									{{ b.title }}
-								</span><span class="bookmark_url">
-									{% if "show_url" in b %}
-										{{ b.show_url }}
-									{% else %}
-										{{ b.url }}
-									{% endif %}
-								</span>
-							</a></p>
-						{% endfor %}
-					</td>
-					<td class="portal_azure">
-						<iframe src="/calendar"></iframe>
-					</td>
+					{% for b in bookmarks %}
+						<p><a href="{{ b.url }}" target="_blank">
+							<span class="bookmark_left">
+							</span><span class="bookmark_icon">
+								<img width="16px" height="16px" src="{{ b.icon }}" />
+							</span><span class="bookmark_title">
+								{{ b.title }}
+							</span><span class="bookmark_url">
+								{% if "show_url" in b %}
+									{{ b.show_url }}
+								{% else %}
+									{{ b.url }}
+								{% endif %}
+							</span>
+						</a></p>
+					{% endfor %}
+				</td>
+				<td class="portal_azure">
+					<iframe src="/calendar"></iframe>
+				</td>
 			</tr>
 		</tbody></table>
 	</body>

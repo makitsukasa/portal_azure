@@ -173,15 +173,15 @@ td.controls table{
 	border-collapse: collapse;
 }
 
-td.controls td.c_text{
+td.controls td.ctrl_text, td.controls td.ctrl_date{
 	width: calc(100% - var(--submitbuttons-width));
 }
 
-#tt_text, #gt_text{
+#gc_text, #tt_text, #gt_text{
 	width: 100%;
 }
 
-td.controls td.c_submit{
+td.controls td.ctrl_submit{
 	width: var(--submitbuttons-width);
 }
 
