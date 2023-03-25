@@ -15,7 +15,11 @@ function updateClock () {
 	let MM_DD = MM + "/" + DD;
 
 	if (clockElements[1].innerHTML != MM_DD) {
-		showCalendar();
+		if (WWW == "日") {
+			document.location.reload();
+		} else {
+			showCalendar();
+		}
 	}
 
 	clockElements[0].innerHTML = YYYY + "/";
