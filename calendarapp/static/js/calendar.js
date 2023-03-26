@@ -14,10 +14,15 @@ function updateClock () {
 
 	let MM_DD = MM + "/" + DD;
 
-	if (clockElements[1].innerHTML != MM_DD) {
+	if (!clockElements[1].innerHTML) {
+		// 左上の日付が空(ページが読み込まれた直後)はshowCalendar()
+		showCalendar();
+	} else if (clockElements[1].innerHTML != MM_DD) {
 		if (WWW == "日") {
+			// 日曜日になった瞬間は行がずれるのでreload()
 			document.location.reload();
 		} else {
+			// 日曜日以外で日付が変わったらshowCalendar()
 			showCalendar();
 		}
 	}
