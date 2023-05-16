@@ -6,11 +6,6 @@ from googleapiclient.errors import HttpError
 
 
 def get_events(todaystr = None, show_hidden = False):
-	if show_hidden:
-		filter_func = lambda event, date: event["date"] == date
-	else:
-		filter_func = lambda event, date: event["date"] == date and (event["color"] in ["0", "4"])
-
 	gapi_creds = Credentials.from_service_account_info(
 		{
 			"private_key": os.getenv("CUSTOMCONNSTR_GOOGLE_PRIVATE_KEY", "").replace('\\n', '\n'),
@@ -55,21 +50,26 @@ def get_events(todaystr = None, show_hidden = False):
 		print(e.content)
 		return {}
 	else:
-		events = [{
-			"date" : datetime.date.fromisoformat(e["start"]["date"]),
-			"summary" : e["summary"],
-			"color" : e.get("colorId", "0"),
-		} for e in events["items"]] + [{
-			"date" : datetime.date.fromisoformat(e["start"]["date"]),
-			"summary" : e["summary"],
-			"color" : e.get("colorId", "4"),
-		} for e in holyday_events["items"]]
+		events = [
+			{
+				"date" : datetime.date.fromisoformat(e["start"]["date"]),
+				"summary" :
+					"-" if (e.get("colorId", "0") not in ["0", "4"]) else e.get("summary", "-"),
+				"color" : e.get("colorId", "0"),
+			} for e in events["items"]
+		] + [
+			{
+				"date" : datetime.date.fromisoformat(e["start"]["date"]),
+				"summary" : e.get("summary", "-"),
+				"color" : e.get("colorId", "4"),
+			} for e in holyday_events["items"]
+		]
 
 		ret = {"day" + str(i): "" for i in range(39)}
 		for i in range(39):
 			date = datetime.date.fromisoformat(
 				(date_min + datetime.timedelta(days=i)).isoformat()[:10])
-			events_today = list(filter(lambda e: filter_func(e, date), events))
+			events_today = list(filter(lambda e: e["date"] == date, events))
 			# print(date.isoformat(), ":" , len(events_today), "schedules")
 			# [print(e) for e in events_today]
 			ret["day" + str(i)] = [{
