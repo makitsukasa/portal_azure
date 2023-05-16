@@ -53,8 +53,7 @@ def get_events(todaystr = None, show_hidden = False):
 		events = [
 			{
 				"date" : datetime.date.fromisoformat(e["start"]["date"]),
-				"summary" :
-					"-" if (e.get("colorId", "0") not in ["0", "4"]) else e.get("summary", "-"),
+				"summary" :	e.get("summary", "-"),
 				"color" : e.get("colorId", "0"),
 			} for e in events["items"]
 		] + [
@@ -74,9 +73,11 @@ def get_events(todaystr = None, show_hidden = False):
 			# [print(e) for e in events_today]
 			ret["day" + str(i)] = [{
 				"color" : e["color"],
-				"summary" : e["summary"],
+				"summary" : "-" if (not show_hidden and e["color"] not in ["0", "4"]) else e["summary"],
 			} for e in events_today]
 		return ret
+
+
 
 
 def insert_event(summary, date, color = 0):
