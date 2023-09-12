@@ -21,7 +21,7 @@ urlpatterns = [
 	path('', include('hello_world.urls')),
 	path('calendar/', include('calendarapp.urls')),
 	path('portal/', include('portalapp.urls')),
-	path('tt/', include('twitter.urls')),
+	path('mn/', include('misskey.urls')),
 	path('gt/', include('tasksapp.urls')),
 	path('admin/', admin.site.urls),
 ]

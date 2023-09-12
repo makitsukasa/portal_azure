@@ -177,7 +177,7 @@ td.controls td.ctrl_text, td.controls td.ctrl_date{
 	width: calc(100% - var(--submitbuttons-width));
 }
 
-#gc_text, #tt_text, #gt_text{
+#gc_text, #mn_text, #gt_text{
 	width: 100%;
 }
 

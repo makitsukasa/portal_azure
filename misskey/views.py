@@ -1,9 +1,9 @@
 import json
 from django.http import HttpResponse
-from .tw import update_status
+from .ms import note
 
 def post(request):
-	result = update_status(request.POST.get("text"))
+	result = note(request.POST.get("text"))
 
 	if result:
 		return HttpResponse(json.dumps({
