@@ -4,6 +4,7 @@ from . import views
 urlpatterns = [
 	path('', views.index, name='calendarapp'),
 	path('2', views.hidden, name='calendarapp'),
-	path('p', views.insert, name='event_insert'),
-	# path('d', views.delete, name='event_delete'),
+	path('c', views.create, name='event_create'),
+	path('u', views.update, name='event_update'),
+	path('d', views.delete, name='event_delete'),
 ]

@@ -74,13 +74,19 @@ function showCalendar () {
 		// 月初か
 		// 月末か
 		// 当日のとき
-		let month = cells[i].id == 'week0Wed' ||
+		let showMonth = cells[i].id == 'week0Wed' ||
 			cells[i].id == 'week5Sat' ||
 			date.getDate() == 1 ||
 			nextDate.getDate() == 1 ||
 			isToday(date);
 
-		cells[i].querySelector(":scope > .dateStr").innerHTML = getDateStr(date, month);
+		let datestr = date.getFullYear().toString() + "-" +
+			('0' + (date.getMonth() + 1).toString()).slice(-2) + "-" +
+			('0' + date.getDate().toString()).slice(-2);
+
+		let div = cells[i].querySelector(":scope > .dateStr");
+		div.innerHTML = getDateStr(date, showMonth);
+		div.setAttribute("onclick", `fillForm(\"\", 0, \"\", \"${datestr}\")`);
 
 		if (isToday(date)) {
 			cells[i].classList.add("today");
